@@ -1,21 +1,19 @@
 #include "holberton.h"
 /**
- * check_file_existence - Verify if a file exists
- * @file_path: Path to the file
- * Return: 0 if the file exists or -1 if not
+ * exist - Verify if a file exist
+ * @pathname: path to the file
+ * Return: 0 if the file exist or -1 if not
  */
-int check_file_existence(char *file_path)
+int exist(char *pathname)
 {
-	int file_status;
+	int exist_stat;
 
-	file_status = (open(file_path, O_RDONLY));
-	if (file_status != -1)
+	exist_stat = (open(pathname, O_RDONLY));
+	if (exist_stat != -1)
 	{
-		close(file_status);
+		close(exist_stat);
 		return (0);
 	}
 	else
-	{
 		return (-1);
-	}
 }

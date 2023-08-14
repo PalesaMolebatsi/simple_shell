@@ -1,24 +1,23 @@
 #include "holberton.h"
 /**
- * duplicate_string - Duplicates a string.
- * @str: String to be duplicated.
- * Return: Pointer to the duplicated string or NULL if malloc fails.
+ * _strdup - Duplicates a string
+ * @str: String to be duplicated
+ * Return: Pointer to the duplicated string
  */
-char *duplicate_string(char *str)
+char *_strdup(char *str)
 {
-	unsigned int i, length;
+	unsigned int i, len;
 	char *duplicate;
 
 	if (str == NULL)
 		return (NULL);
 
-	for (length = 0; str[length] != '\0'; length++)
+	for (len = 0; str[len] != '\0'; len++)
 		;
-	duplicate = (char *) malloc(sizeof(char) * (length + 1));
+	duplicate = (char *) malloc(sizeof(char) * (len + 1));
 	if (duplicate == NULL)
 		return (NULL);
-
-	for (i = 0; i <= length; i++)
+	for (i = 0; i <= len; i++)
 	{
 		duplicate[i] = str[i];
 	}

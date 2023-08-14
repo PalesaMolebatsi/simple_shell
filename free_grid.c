@@ -1,23 +1,20 @@
 #include "holberton.h"
 /**
- * free_custom_grid - Free the allocated memory used for a custom grid.
- * @grid: Pointer to the grid.
- * @height: Height of the grid.
+ *free_grid - Free the allocated memory used in the last excercise
+ *@grid: pointer to grid
+ *@heigth: Heigth of the grid
  */
 
-
-void free_custom_grid(char **grid, int height)
+void free_grid(char **grid, int heigth)
 {
 	int i = 0;
-
 
 	if (grid == NULL)
 	{
 		return;
 	}
 
-
-	while (i < height)
+	while (i < heigth)
 	{
 		free(grid[i]);
 		i++;

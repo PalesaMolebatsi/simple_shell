@@ -1,25 +1,25 @@
 #include "holberton.h"
 /**
- * extract_args - Extracts and stores each input typed by the user into an array.
- * @input_str: String with the input from the user.
- * @args_array: Array to be filled with extracted arguments.
- * Return: Length of the array.
+ * fill_args - Fill an array with every input typed by the user
+ * @entry: String with the input
+ * @arguments: Array to be filled
+ * Return: Length of the array
  */
 
-int extract_args(char *input_str, char **args_array)
+int fill_args(char *entry, char **arguments)
 {
 	int i = 0;
-	char *token, *temp_input = input_str, *command;
+	char *options, *aux = entry, *command;
 
-	command = strtok(input_str, "\n\t\r "); /**Extract the command (token 0) */
-	args_array[i] = command; /**Store the command (token 1) in args_array*/
-	while (temp_input != NULL) /**While there are more tokens*/
+	command = strtok(entry, "\n\t\r "); /**Extract the command 0 */
+	arguments[i] = command; /**Store command 1 in args*/
+	while (aux != NULL) /**While there are tokens*/
 	{
 		++i;
-		token = strtok(NULL, "\n\t\r "); /**Store the nth argument in token*/
-		temp_input = token;
-		args_array[i] = token; /**Store the nth argument in args_array[i]*/
+		options = strtok(NULL, "\n\t\r "); /**Store the nth argument in the parameter*/
+		aux = options;
+		arguments[i] = options; /**Store parameter i in args[i]*/
 	}
-	args_array[i] = NULL; /**Mark the end of the array*/
-	return (i); /**Return the length of args_array[]*/
+	arguments[i] = NULL; /**Mark the end of the array.*/
+	return (i); /**Return the length of args[]*/
 }
