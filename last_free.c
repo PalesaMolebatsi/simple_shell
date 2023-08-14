@@ -1,15 +1,15 @@
 #include "holberton.h"
 /**
- * clear_memory - Free the allocated memory after the last execution.
- * @user_input: Input typed by the user.
+ * last_free - Free the memory for the last execution
+ * @entry: Input typed by the user
  */
-void clear_memory(char *user_input)
+void last_free(char *entry)
 {
 	if (isatty(STDIN_FILENO))
 	{
-		print_character('\n');
-		free(user_input);
+		_putchar('\n');
+		free(entry);
 	}
 	if (!isatty(STDIN_FILENO))
-		free(user_input);
+		free(entry);
 }
