@@ -1,32 +1,32 @@
 #include "holberton.h"
 /**
- * execute_command - Creates a new child process,
- * executes a command and waits for the child process
- * to update the status.
- * @args: Array of inputs provided by the user.
- * Return: 0 if success.
+ * exec - Creates a new child process,
+ * executes a command and wait for the child process
+ * to update the status
+ * @arguments: Array of inputs by the user
+ * Return: 0 if success
  */
-int execute_command(char **args)
+int exec(char **arguments)
 {
-	pid_t child_pid = 0;/**Child process id*/
-	int child_status = 0, exe_status = 0;/**Status of the child process*/
+	pid_t pid = 0;/**Child process id*/
+	int stat = 0, exe_stat = 0;/**indica el status del child process*/
 
-	child_pid = fork();/**Create a child process*/
-	if (child_pid == -1)/**Failed to create*/
+	pid = fork();/**Crea un proceso hijo*/
+	if (pid == -1)/**Falló al crear*/
 		_printp("failed\n", 7);
-	else if (child_pid == 0)/**Child process*/
+	else if (pid == 0)/**Es el hijo...*/
 	{
-		exe_status = execute(args[0], args, environ);/**Execute the command*/
-		if (exe_status == -1)
+		exe_stat = execve(arguments[0], arguments, environ);/**Ejecuta el comando*/
+		if (exe_stat == -1)
 		{
-			exe_status = 126;
+			exe_stat = 126;
 			perror("hsh");
-			exit(exe_status);
-		} /**Exit the child process successfully*/
+			exit(exe_stat);
+		} /**Terminar el child process con exito*/
 		exit(0);
 	}
-	else/**Parent process*/
-		wait(&child_status);/**Stop the parent's execution until the child process finishes*/
-	exe_status = WEXITSTATUS(child_status);
-	return (exe_status);
-}
+	else /**Es el padre*/
+		wait(&stat);/**Detiene la ejecución del padre hasta que el child termine*/
+	exe_stat = WEXITSTATUS(stat);
+	return (exe_stat);
+	}
