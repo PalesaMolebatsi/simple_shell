@@ -1,19 +1,19 @@
 #include "holberton.h"
 /**
- * print_prompt - Prints the prompt to the standard output.
- * @prompt_str: Pointer to the string to be printed.
- * @length: Length of the prompt string.
- * Return: 0 if success or -1 if fails.
+ * _printp - Prints the prompt in the standar input
+ * @prompt: Pointer to the string to be printed
+ * @size: Length ot the prompt
+ * Return: 0 if success or -1 if fails
  */
-int print_prompt(const char *prompt_str, unsigned int length)
+int _printp(const char *prompt, unsigned int size)
 {
-	int chars_written;
+	int written;
 
 	if (isatty(STDIN_FILENO))
 	{
-		chars_written = write(1, prompt_str, length);
-		if (chars_written == -1)
+		written = write(1, prompt, size);
+		if (written == -1)
 			return (-1);
 	}
-	return (0);
+		return (0);
 }

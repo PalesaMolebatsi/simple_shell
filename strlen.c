@@ -1,19 +1,18 @@
 #include "holberton.h"
 /**
- * get_string_length - Computes the length of a string.
- * @str: String to be measured.
- * Return: The length of the string.
+ * _strlen - Sizes the length of a string
+ * @string: String to be sized
+ * Return: The length ot the string
  */
-int get_string_length(const char *str)
+
+int _strlen(const char *string)
 {
 	int length = 0;
 
-
-	if (str == NULL)
+	if (string == NULL)
 		return (0);
 
-
-	while (str[length] != '\0')
+	while (string[length] != '\0')
 		length++;
 	return (length);
 }

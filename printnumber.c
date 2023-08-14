@@ -1,27 +1,26 @@
 #include "holberton.h"
 /**
- * print_integer - Prints an integer, used to print the error message.
- * @num: Number to print.
- * Return: Number of characters printed.
+ * print_numbers - Prints numbers, used to print the error message
+ * @n: number to print
+ * Return: Number
  */
-int print_integer(int num)
+
+int print_numbers(int n)
 {
 	unsigned int number;
-	int chars_printed = 0;
+	int i = 0;
 
-	if (num < 0)
+	if (n < 0)
 	{
-		number = -num;
-		chars_printed += _putchar('-');
+		number = -n;
+		i = i + _putchar('-');
 	}
 	else
 	{
-		number = num;
+		number = n;
 	}
-
-	if (number / 10 != 0)
-		chars_printed += print_integer(number / 10);
-
-	chars_printed += _putchar(number % 10 + '0');
-	return (chars_printed);
+	if (number / 10 != '\0')
+		i = i + print_numbers(number / 10);
+	i = i + _putchar(number % 10 + '0');
+	return (i);
 }
