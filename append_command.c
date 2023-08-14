@@ -1,41 +1,37 @@
 #include "holberton.h"
 /**
- * concatenate_paths - Concatenates a directory path with a command.
- * @directory: The directory path to be appended with the command.
- * @command: The command to be concatenated with the directory path.
- * Return: Pointer to the concatenated path.
+ * append_command - Concatenates an input with paths in global variable PATH
+ * @dir_path: directory string to be append with the command
+ * @command: command to be concatenated with the directory
+ * Return: Buffer to concatenated path
  */
-char *concatenate_paths(char *directory, char *command)
+char *append_command(char *dir_path, char *command)
 {
-	int i, j = 0, len_dir, len_cmd;
-	char *result_path = NULL;
+	int a, b = 0, len1, len2;
+	char *command_path = NULL;
 
-	if (directory == NULL || command == NULL)
+	if (dir_path == NULL || command == NULL)
 		return (NULL);
 
-	len_dir = _string_length(directory);
-	len_cmd = _string_length(command);
-	result_path = malloc(len_dir + len_cmd + 2);
-	if (result_path == NULL)
+	len1 = _strlen(dir_path);
+	len2 = _strlen(command);
+	command_path = malloc(len1 + len2 + 2);
+	if (command_path == NULL)
 		return (NULL);
-
-	for (i = 0; directory[i] != '\0'; i++)
+	for (a = 0; dir_path[a] != '\0'; a++)
 	{
-		result_path[i] = directory[i];
+		command_path[a] = dir_path[a];
 	}
-
-	if (directory[i - 1] != '/')
+	if (dir_path[a - 1] != '/')
 	{
-		result_path[i] = '/';
-		i++;
+		command_path[a] = '/';
+		a++;
 	}
-
-	while (command[j] != '\0')
+	while (command[b] != '\0')
 	{
-		result_path[i + j] = command[j];
-		j++;
+		command_path[a + b] = command[b];
+		b++;
 	}
-
-	result_path[i + j] = '\0';
-	return (result_path);
+	command_path[a + b] = '\0';
+	return (command_path);
 }
