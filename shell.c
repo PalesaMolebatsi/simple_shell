@@ -9,7 +9,7 @@ int main(void)
 {
 	ssize_t bytes_rd = 0; /**Bytes leídos de un getline*/
 	size_t bf_size = 0; /**Bytes read from a getline*/
-	char *entry = NULL, *arguments[20]; /**String of arguments entered by the user*/
+	char *entry = NULL, *arguments[20];
 	int counter = 1, vf_stat = 0, exist_stat = 0, exit_stat = 0, blt_stat = 0;
 
 	_printp("$ ", 2);/**prompt mini-shell*/
@@ -21,7 +21,7 @@ int main(void)
 			fill_args(entry, arguments);
 			if (arguments[0] != NULL)
 			{
-				exist_stat = exist(arguments[0]);/**Exist evaluates whether the entered path exists*/
+				exist_stat = exist(arguments[0]);
 				if (exist_stat != 0)/**File not found*/
 				{
 					vf_stat = verify_path(arguments);
